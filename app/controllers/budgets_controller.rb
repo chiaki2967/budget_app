@@ -1,4 +1,7 @@
 class BudgetsController < ApplicationController
-  def home
+  def top
+  end
+
+  def finances
   end
 end

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-  # ホームページ
-  get "budgets/home" => "budgets#home"
+  # トップページ
+  get "budgets/top" => "budgets#top"
+  # 収入を記入するページ
+  get "budgets/finances" => "budgets#finances"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
