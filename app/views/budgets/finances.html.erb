@@ -1,25 +1,27 @@
-<!description html>
-<html lang="ja">
+<header>
+  <h1>収支を登録するページ</h1>
+  <nav>
+    <ul>
+      <li><a href="top">トップに戻る</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <head>
-    <meta charset="UTF-8">
-    <title>income</title>
-    <meta name="description" content="収入を入力するページです">
-  </head>
+  <% if @finance.errors.full_messages.present? %>
+    <% @finance.errors.full_messages.each do |finance_errors| %>
+      <p><%= finance_errors %></p>
+    <% end %>
 
-    <body>
-      <header>
-        <h2>収支を登録するページ</h2>
-        <nav>
-          <li><a href="top">トップに戻る</a></li>
-        </nav>
-      </header>
+  <% end %>
 
-        <div>
-          収支：
-          <input type="radio" name="finances" value="支出" checked>支出
-          <input type="radio" name="finances" value="収入">支出
-          <input type="submit" value="登録">
-        </div>
-    </body>
-  </html>
+<div>
+  <%= form_with model: @finance, url: "/budgets/create" do |form| %>
+    <%= form.radio_button :kind, "収入" %>
+    <%= form.label("kind_収入", "収入")  %>
+    <%= form.radio_button :kind, "支出" %>
+    <%= form.label("kind_支出", "支出")  %>
+    <%= form.date_field :date %>
+    <%= form.number_field :amount %>
+    <%= form.submit %>
+  <% end %>
+</div>

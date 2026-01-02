@@ -1,0 +1,25 @@
+<header>
+  <h1>一覧ページ</h1>
+  <nav>
+    <ul>
+      <li><a href="top">トップに戻る</a></li>
+    </ul>
+  </nav>
+</header>
+
+<table border="1">
+  <tr>
+    <th>金額</th>
+    <th>日付</th>
+    <th>収支の種類</th>
+  </tr>
+
+<% @finances.each do |finance| %>
+  <tr>
+    <td><%= finance.amount || "空のデータ" %></td>
+    <td><%= finance.date || "空のデータ" %></td>
+    <td><%= finance.kind || "空のデータ" %></td>
+  </tr>
+  <% end %>
+
+</table>

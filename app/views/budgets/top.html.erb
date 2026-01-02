@@ -1,20 +1,11 @@
-<!description html>
-<html lang="ja">
+<header>
+  <h1>トップページ</h1>
+  <% if flash[:success].present? %>
+    <p><%= flash[:success] %></p>
+  <% end %>
+</header>
 
-  <head>
-    <meta charset="UTF-8">
-    <title>income</title>
-    <meta name="description" content="トップページです">
-  </head>
-
-  <header>
-    <h2>トップページ</h2>
-  </header>
-
-   <body>
-     <h3>収支を記録する</h3>
-     <nav>
-     <li><a href="finances">ikuze</a></li>
-     </nav>
-    </body>
-  </html>
+<nav>
+  <li><%= link_to "収支を記録", budgets_finances_path %></li>
+  <li><a href="list">一覧ページ</a></li>
+</nav>

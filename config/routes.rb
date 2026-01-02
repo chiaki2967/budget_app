@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
   # トップページ
-  get "budgets/top" => "budgets#top"
+  get "budgets/top" => "budgets#top", as: :top # top_path
   # 収入を記入するページ
   get "budgets/finances" => "budgets#finances"
+
+  # 一覧ページ
+  get "budgets/list" => "budgets#list"
+
+
+  post "budgets/create" => "budgets#create"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

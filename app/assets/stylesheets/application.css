@@ -4,6 +4,17 @@
 
  header {
   display: flex;
-  justify-content: center; /* 水平方向の中央寄せ */
   align-items: center;    /* 垂直方向の中央寄せ */
+}
+
+h2 {
+  margin: auto;
+}
+
+div {
+  margin-top: 30px;
+}
+
+.field_with_errors {
+  display: contents;
 }
