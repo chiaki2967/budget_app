@@ -20,7 +20,11 @@ class BudgetsController < ApplicationController
   end
 
   def list
-    @finances = Finance.all
+    if params[:t].present?
+      @finances = Finance.where(amount: params[:t])
+    else
+      @finances = Finance.all
+    end
   end
 
   def detail

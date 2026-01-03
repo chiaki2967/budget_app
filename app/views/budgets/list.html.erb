@@ -7,6 +7,12 @@
   </nav>
 </header>
 
+<%= form_with(url: budgets_list_path, method: :get) do |form| %>
+  <%= form.text_field :t, placeholder: "検索する金額を入力", value: params[:t]%>
+  <%= form.submit "検索"%>
+<% end %>
+
+
 <% if flash[:success].present? %>
   <p><%= flash[:success] %></p>
 <% end %>
