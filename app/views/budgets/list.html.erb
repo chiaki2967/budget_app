@@ -7,18 +7,31 @@
   </nav>
 </header>
 
+<% if flash[:success].present? %>
+  <p><%= flash[:success] %></p>
+<% end %>
+
 <table border="1">
   <tr>
+    <th>id</th>
     <th>金額</th>
     <th>日付</th>
     <th>収支の種類</th>
+    <th>作成日時</th>
+    <th>更新日時</th>
+    <th>操作</th>
   </tr>
 
 <% @finances.each do |finance| %>
   <tr>
-    <td><%= finance.amount || "空のデータ" %></td>
+    <td><%= link_to finance.id, budgets_detail_path(id: finance.id) %></td>
+    <td><%= finance.amount || "空のデータ" %> </td>
     <td><%= finance.date || "空のデータ" %></td>
     <td><%= finance.kind || "空のデータ" %></td>
+    <td><%= finance.created_at.strftime('%Y年%m月%d日') %></td>
+    <td><%= finance.updated_at.strftime('%Y年%m月%d日') %></td>
+    <td><%= link_to "削除リンク", budgets_delete_path(id: finance.id), data: { turbo_method: :delete } %></td>
+     <td><%= link_to "編集リンク", budgets_edit_path(id: finance.id) %></td>
   </tr>
   <% end %>
 

@@ -8,7 +8,7 @@ class BudgetsController < ApplicationController
 
   def create
     # params[:finance]
-    # => {"kind" => "支出", "date" => "2026-01-15", "amount" => "99999"}
+    # => { "kind" => "支出", "date" => "2026-01-15", "amount" => "99999" }
 
     @finance = Finance.new(finance_params)
     if @finance.save
@@ -23,10 +23,34 @@ class BudgetsController < ApplicationController
     @finances = Finance.all
   end
 
+  def detail
+    @finance = Finance.find(params[:id])
+  end
+
+  def delete
+    @finance = Finance.find(params[:id])
+    @finance.destroy
+    flash[:success] = "削除に成功しました！"
+    redirect_to budgets_list_path
+  end
+
+  def edit
+    @finance = Finance.find(params[:id])
+  end
+
+  def update
+    @finance = Finance.find(params[:finance][:id])
+    if @finance.update(finance_params)
+      flash[:success] = "編集に成功しました！"
+      redirect_to budgets_list_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def finance_params
     params.require(:finance).permit(:amount, :date, :kind)
   end
-
 end

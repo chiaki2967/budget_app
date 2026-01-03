@@ -1,0 +1,29 @@
+<header>
+  <h1>詳細ページ</h1>
+  <nav>
+    <ul>
+      <li><a href="top">トップに戻る</a></li>
+    </ul>
+  </nav>
+</header>
+
+<table border="1">
+  <tr>
+    <th>id</th>
+    <th>金額</th>
+    <th>日付</th>
+    <th>収支の種類</th>
+    <th>作成日時</th>
+    <th>更新日時</th>
+  </tr>
+
+ <tr>
+  <td><%= @finance.id %></td>
+  <td><%= @finance.amount %></td>
+  <td><%= @finance.date %></td>
+  <td><%= @finance.kind %></td>
+  <td><%= @finance.created_at.strftime('%Y年%m月%d日') %></td>
+  <td><%= @finance.updated_at.strftime('%Y年%m月%d日') %></td>
+ </tr>
+
+ </table>

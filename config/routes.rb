@@ -8,8 +8,16 @@ Rails.application.routes.draw do
   # 一覧ページ
   get "budgets/list" => "budgets#list"
 
+  # 詳細ページ
+  get "budgets/detail" => "budgets#detail"
 
   post "budgets/create" => "budgets#create"
+
+  delete "budgets/delete" => "budgets#delete"
+
+  get "budgets/edit" => "budgets#edit"
+
+  patch "budgets/update" => "budgets#update"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

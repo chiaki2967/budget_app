@@ -1,0 +1,28 @@
+<header>
+  <h1>収支を編集ページ</h1>
+  <nav>
+    <ul>
+      <li><a href="top">トップに戻る</a></li>
+    </ul>
+  </nav>
+</header>
+
+  <% if @finance.errors.full_messages.present? %>
+    <% @finance.errors.full_messages.each do |finance_errors| %>
+      <p><%= finance_errors %></p>
+    <% end %>
+
+  <% end %>
+
+<div>
+  <%= form_with model: @finance, url: "/budgets/update" do |form| %>
+    <%= form.hidden_field :id, value: @finance.id %>
+    <%= form.radio_button :kind, "収入" %>
+    <%= form.label("kind_収入", "収入")  %>
+    <%= form.radio_button :kind, "支出" %>
+    <%= form.label("kind_支出", "支出")  %>
+    <%= form.date_field :date %>
+    <%= form.number_field :amount %>
+    <%= form.submit %>
+  <% end %>
+</div>
